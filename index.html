@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Home</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a class="nav-link active" data-page="home">Home</a></li>
+            <li><a class="nav-link" data-page="about">About</a></li>
+            <li><a class="nav-link" data-page="contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>Welcome to my smester project</h1>
+            <p>Crafting elegant solutions with timeless design principles and modern aesthetics</p>
+            <div class="hero-image">Hero Image Placeholder</div>
+        </div>
+        <div class="content">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Our Approach</h2>
+            <div class="about-grid">
+                <div class="card">
+                    <div class="card-image">Image 1</div>
+                    <h3>Minimalist Design</h3>
+                    <p>We believe in the power of simplicity and clean aesthetics that stand the test of time.</p>
+                </div>
+                <div class="card">
+                    <div class="card-image">Image 2</div>
+                    <h3>Quality Focus</h3>
+                    <p>Every project receives meticulous attention to detail and craftsmanship.</p>
+                </div>
+                <div class="card">
+                    <div class="card-image">Image 3</div>
+                    <h3>Timeless Results</h3>
+                    <p>Creating work that remains relevant and beautiful for years to come.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="page">
+        <div class="hero">
+            <h1>About Us</h1>
+            <p>A team dedicated to creating meaningful experiences through thoughtful design</p>
+        </div>
+        <div class="content">
+            <div class="card" style="max-width: 800px; margin: 0 auto 2rem;">
+                <h2 style="margin-bottom: 1rem;">Our Story</h2>
+                <p style="margin-bottom: 1rem;">Founded with a passion for understated elegance, Studio Neutral brings together creativity and functionality. We believe that great design doesn't need to shout—it speaks through careful consideration, quality materials, and attention to every detail.</p>
+                <p>Our neutral palette reflects our philosophy: timeless, versatile, and always focused on what truly matters.</p>
+            </div>
+            <div class="about-grid">
+                <div class="card">
+                    <div class="card-image">Team Photo</div>
+                    <h3>Our Team</h3>
+                    <p>A diverse group of designers, developers, and strategists united by a shared vision.</p>
+                </div>
+                <div class="card">
+                    <div class="card-image">Office Space</div>
+                    <h3>Our Space</h3>
+                    <p>A carefully curated environment that inspires creativity and collaboration.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <div class="hero">
+            <h1>Get In Touch</h1>
+            <p>Let's start a conversation about your next project</p>
+        </div>
+        <div class="content">
+            <div class="contact-image">Contact Image Placeholder</div>
+            <div class="card" style="max-width: 600px; margin: 2rem auto;">
+                <h2 style="margin-bottom: 1.5rem;">Send us a message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pages = document.querySelectorAll('.page');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const targetPage = link.getAttribute('data-page');
+            
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(targetPage).classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for your message! We\'ll get back to you soon.');
+        e.target.reset();
+    });
+</script>
+</html>
