@@ -3,94 +3,316 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Neutral Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <title>Home</title>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        nav a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: #95a5a6;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            background-color: #34495e;
+            color: #ecf0f1;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .content-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .content-section p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #34495e;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #34495e;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a class="nav-link active" data-page="home">Home</a></li>
-            <li><a class="nav-link" data-page="about">About</a></li>
-            <li><a class="nav-link" data-page="contact">Contact</a></li>
+            <li><a href="#home" class="nav-link active" onclick="showPage('home')">Home</a></li>
+            <li><a href="#about" class="nav-link" onclick="showPage('about')">About</a></li>
+            <li><a href="#contact" class="nav-link" onclick="showPage('contact')">Contact</a></li>
         </ul>
     </nav>
 
+    <!-- Home Page -->
     <div id="home" class="page active">
         <div class="hero">
-            <h1>Welcome to my smester project</h1>
-            <p>This is my smester project and making this website for practice purposee</p>
-            <div class="images\img1.jpg">Hero Image Placeholder</div>
+            <h1>Welcome to Our Website</h1>
+            <p>Discover amazing content and connect with us through our platform</p>
         </div>
-        <div class="content">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Our Approach</h2>
-            <div class="about-grid">
+        <div class="container">
+            <div class="content-section">
+                <h2>What We Offer</h2>
+                <p>We provide exceptional services tailored to meet your needs. Our platform is designed with simplicity and functionality in mind.</p>
+            </div>
+            <div class="grid">
                 <div class="card">
-                    <div class="images/img2.jpg">Image 1</div>
-                    <h3>Minimalist Design</h3>
-                    <p>We believe in the power of simplicity and clean aesthetics that stand the test of time.</p>
+                    <h3>Quality Service</h3>
+                    <p>We deliver top-notch services that exceed expectations and provide real value to our clients.</p>
                 </div>
                 <div class="card">
-                    <div class="images/img3.jpg">Image 2</div>
-                    <h3>Quality Focus</h3>
-                    <p>Every project receives meticulous attention to detail and craftsmanship.</p>
+                    <h3>Professional Team</h3>
+                    <p>Our experienced team is dedicated to providing excellent support and guidance every step of the way.</p>
                 </div>
                 <div class="card">
-                    <div class="images/img4.jpg">Image 3</div>
-                    <h3>Timeless Results</h3>
-                    <p>Creating work that remains relevant and beautiful for years to come.</p>
+                    <h3>Customer Focus</h3>
+                    <p>Your satisfaction is our priority. We listen to your needs and deliver customized solutions.</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- About Page -->
     <div id="about" class="page">
         <div class="hero">
             <h1>About Us</h1>
-            <p>A team dedicated to creating meaningful experiences through thoughtful design</p>
+            <p>Learn more about our mission and values</p>
         </div>
-        <div class="content">
-            <div class="card" style="max-width: 800px; margin: 0 auto 2rem;">
-                <h2 style="margin-bottom: 1rem;">Our Story</h2>
-                <p style="margin-bottom: 1rem;">Founded with a passion for understated elegance, Studio Neutral brings together creativity and functionality. We believe that great design doesn't need to shout—it speaks through careful consideration, quality materials, and attention to every detail.</p>
-                <p>Our neutral palette reflects our philosophy: timeless, versatile, and always focused on what truly matters.</p>
+        <div class="container">
+            <div class="content-section">
+                <h2>Our Story</h2>
+                <p>Founded with a vision to make a difference, we have grown into a trusted name in our industry. Our journey has been marked by continuous innovation and a commitment to excellence.</p>
+                <p>We believe in creating lasting relationships with our clients and partners. Every project we undertake is approached with dedication, creativity, and a drive to deliver exceptional results.</p>
             </div>
-            <div class="about-grid">
-                <div class="card">
-                    <div class="images/img5.jpeg">Team Photo</div>
-                    <h3>Our Team</h3>
-                    <p>A diverse group of designers, developers, and strategists united by a shared vision.</p>
-                </div>
-                <div class="card">
-                    <div class="images/img6.jpeg">Office Space</div>
-                    <h3>Our Space</h3>
-                    <p>A carefully curated environment that inspires creativity and collaboration.</p>
+            <div class="content-section">
+                <h2>Our Mission</h2>
+                <p>To provide innovative solutions that empower our clients to achieve their goals while maintaining the highest standards of quality and integrity.</p>
+            </div>
+            <div class="content-section">
+                <h2>Our Values</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Integrity</h3>
+                        <p>We operate with transparency and honesty in all our dealings.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Excellence</h3>
+                        <p>We strive for excellence in everything we do, never settling for mediocrity.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Innovation</h3>
+                        <p>We embrace change and continuously seek new ways to improve and evolve.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Contact Page -->
     <div id="contact" class="page">
         <div class="hero">
             <h1>Get In Touch</h1>
-            <p>Let's start a conversation about your next project</p>
+            <p>We'd love to hear from you</p>
         </div>
-        <div class="content">
-            <div class="images/img7.jpeg">Contact Image Placeholder</div>
-            <div class="card" style="max-width: 600px; margin: 2rem auto;">
-                <h2 style="margin-bottom: 1.5rem;">Send us a message</h2>
-                <form id="contactForm">
+        <div class="container">
+            <div class="content-section">
+                <h2>Contact Us</h2>
+                <p>Have a question or want to work together? Fill out the form below and we'll get back to you as soon as possible.</p>
+                <form id="contactForm" onsubmit="handleSubmit(event)">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" id="name" required>
+                        <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" rows="5" required></textarea>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
                     <button type="submit">Send Message</button>
                 </form>
@@ -98,28 +320,27 @@
         </div>
     </div>
 
-<script>
-    const navLinks = document.querySelectorAll('.nav-link');
-    const pages = document.querySelectorAll('.page');
+    <footer>
+        <p>&copy; 2026 Your Company. All rights reserved.</p>
+    </footer>
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            const targetPage = link.getAttribute('data-page');
-            
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            const links = document.querySelectorAll('.nav-link');
             
             pages.forEach(page => page.classList.remove('active'));
-            document.getElementById(targetPage).classList.add('active');
+            links.forEach(link => link.classList.remove('active'));
             
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    });
+            document.getElementById(pageId).classList.add('active');
+            document.querySelector(`a[href="#${pageId}"]`).classList.add('active');
+        }
 
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for your message! We\'ll get back to you soon.');
-        e.target.reset();
-    });
-</script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
 </html>
